@@ -20,7 +20,9 @@ export class PasswordGeneratorController {
     try {
 
       // validation
-      const validatingData =  PasswordGeneratorValidation(req).parse(req.query)
+      const validatingData =  PasswordGeneratorValidation(req).parse({
+        length: Number(req.query?.length || 32)
+      })
 
       // data object
       const validatedData = {

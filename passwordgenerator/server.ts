@@ -74,7 +74,7 @@ app.use(rateLimiter);
 // run server
 // =============================================================================
 // microservice main route
-app.use('/helloworld', routes);
+app.use('/password-generator', routes);
 
 // error handler
 //------------------------------------------------------

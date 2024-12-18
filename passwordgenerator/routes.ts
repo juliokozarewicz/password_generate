@@ -7,6 +7,6 @@ const routes = Router()
 const passwordGeneratorController = new PasswordGeneratorController()
 
 // routes
-routes.get('/helloworld', passwordGeneratorController.handle.bind(passwordGeneratorController))
+routes.get('/generate', passwordGeneratorController.handle.bind(passwordGeneratorController))
 
 export default routes

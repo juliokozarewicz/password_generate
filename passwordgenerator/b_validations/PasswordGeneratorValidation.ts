@@ -8,7 +8,6 @@ export const PasswordGeneratorValidation = (req: Request) => {
             .int(req.t("just_numbers"))
             .min(32, req.t("length_too_short"))
             .max(500, req.t("length_too_long"))
-            .default(32)
 
     })
 }

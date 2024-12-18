@@ -27,10 +27,11 @@ export class HelloWorldController {
         message: escape(validatingData.message)
       }
 
+      // call execute
       const helloWorldService = new HelloWorldService(req.t);
       const response = await helloWorldService.execute(validatedData);
 
-      //response
+      // response
       res.status(response.code).json(response)
 
     } catch (error) {

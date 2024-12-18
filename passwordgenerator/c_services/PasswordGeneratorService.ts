@@ -14,7 +14,7 @@ export class PasswordGeneratorService {
         validatedData:PasswordGeneratorValidationType
     ): Promise<StandardResponse> {
 
-        const generatePassword = (length: number = 12): string => {
+        const generatePassword = (length: number = 32): string => {
             const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-+=<>?'
             
             const randomValues = randomBytes(length)
@@ -24,19 +24,20 @@ export class PasswordGeneratorService {
             return password
         }
 
-        const passwordSec = generatePassword(validatedData.length)
+        const passwordSec = [
+            { "password": generatePassword(validatedData.length) }
+        ]
 
         return {
             "status": 'success',
             "code": 200,
-            "message": `#####`,
-            "data": [
-                {
-                    "password": `${passwordSec}`
-                }
-            ],
+            "message": `${this.t("password_success")}`,
+            "data": passwordSec,
+            "meta": {
+                "total": passwordSec.length,
+            },
             "links": {
-                "self": '/helloworld/helloworld',
+                "self": '/password-generator/generate',
             }
         }
 
